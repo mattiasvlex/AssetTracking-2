@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace AssetTracking.Menus
 {
-    internal abstract class InputMenu
+    internal abstract class InputMenu(ProgramController controller)
     {
-        protected ProgramController Controller { get; set; }
+        protected ProgramController Controller { get; set; } = controller;
         protected string Prompt { get; set; } = string.Empty;
-        protected string[] InputItems { get; set; }
-
-        public InputMenu(ProgramController controller)
-        {
-            Controller = controller;
-        }
+        protected string[] InputItems { get; set; } = [];
 
         public abstract void Run();
 

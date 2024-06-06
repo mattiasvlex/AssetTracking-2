@@ -11,8 +11,8 @@ namespace AssetTracking
 {
     internal class ProgramController
     {
-        private MainMenu Main;
-        private ApplicationDBContext dbContext;
+        private readonly MainMenu Main;
+        private readonly ApplicationDBContext dbContext;
 
         public ProgramController()
         {

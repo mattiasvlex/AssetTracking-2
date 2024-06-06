@@ -25,11 +25,11 @@ namespace AssetTracking.Menus
                                                                           ░                               
 ";
 
-            Options = new string[] { "List assets", 
-                                     "Edit assets", 
-                                     "Add new asset", 
-                                     "Remove asset" };
-            TopRowPos = 12;  //Prompt is 10 rows, start menu from there
+            Options = [ "List assets", 
+                        "Edit assets", 
+                        "Add new asset", 
+                        "Remove asset" ];
+            TopRowPos = 12;  //Prompt is 10 rows, start menu from a bit further down
         }
 
         public override void SendRequest()

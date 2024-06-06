@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace AssetTracking.Menus
 {
-    internal abstract class ToggledMenu
+    internal abstract class ToggledMenu(ProgramController controller)
     {
-        protected ProgramController Controller { get; set; }
+        protected ProgramController Controller { get; set; } = controller;
         protected string Prompt { get; set; } = string.Empty;
-        protected string[] Options { get; set; }
+        protected string[] Options { get; set; } = [];
         protected int CurrentSelection { get; set; } = 0;
         protected int TopRowPos { get; set; } = 0;
-
-        public ToggledMenu(ProgramController controller)
-        { 
-            Controller = controller;
-        }
 
         public void Run()
         {

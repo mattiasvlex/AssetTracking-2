@@ -23,9 +23,9 @@ namespace AssetTracking.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Office office1 = new Office { Location = "Sweden", Currency = "SEK", ToUSD = 10.68m };
-            Office office2 = new Office { Location = "Denmark", Currency = "DKK", ToUSD = 6.88m };
-            Office office3 = new Office { Location = "USA", Currency = "USD", ToUSD = 1.0m };
+            Office office1 = new Office { Location = "Sweden", Currency = "SEK", ToUSD = 10.68 };
+            Office office2 = new Office { Location = "Denmark", Currency = "DKK", ToUSD = 6.88 };
+            Office office3 = new Office { Location = "USA", Currency = "USD", ToUSD = 1.0 };
 
             modelBuilder.Entity<Office>().HasData(office1, office2, office3);
 

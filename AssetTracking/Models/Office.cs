@@ -13,6 +13,6 @@ namespace AssetTracking.Models
         [Key]
         public string? Location { get; set; }
         public string? Currency { get; set; }
-        public decimal ToUSD { get; set; }
+        public double ToUSD { get; set; }
     }
 }

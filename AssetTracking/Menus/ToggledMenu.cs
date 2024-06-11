@@ -13,8 +13,24 @@ namespace AssetTracking.Menus
         protected string[] Options { get; set; } = [];
         protected int CurrentSelection { get; set; } = 0;
         protected int TopRowPos { get; set; } = 0;
+        protected int LeftColumnPos { get; set; } = 0;
+        protected int MenuWidth { get; set; } = 0;
 
-        public void Run()
+        protected void SetMenuWidth()
+        {
+            //Calculate longest string in options to make the menu symmetric
+            int index = 0;
+            for (int i = 0; i < Options.Length; i++)
+            {
+                if (Options[index].Length < Options[i].Length)
+                {
+                    index = i;
+                }
+            }
+            MenuWidth = Options[index].Length;
+        }
+
+        public virtual void Run()
         {
             Console.WriteLine(Prompt);
             DrawMenuOptions();
@@ -33,30 +49,30 @@ namespace AssetTracking.Menus
                         DrawMenuOptions();
                         break;
                     case ConsoleKey.Enter:
-                        SendRequest();
+                        NavigateOptions();
                         run = false;
                         break;
                 }
             }
         }
 
-        public abstract void SendRequest();
+        protected abstract void NavigateOptions();
 
         protected void DrawMenuOptions()
         {
             for (int i = 0; i < Options.Length; i++)
             {
                 Console.CursorTop = TopRowPos + i;
-                Console.CursorLeft = 40;
+                Console.CursorLeft = LeftColumnPos;
                 if (i == CurrentSelection)
                 {
                     SetColors(ConsoleColor.Black, ConsoleColor.White);
-                    Console.WriteLine("      " + Options[i] + "      ");
+                    Console.WriteLine("      " + Options[i] + " ".PadRight(6 + MenuWidth - Options[i].Length));
                     Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine("      " + Options[i] + "      ");
+                    Console.WriteLine("      " + Options[i] + " ".PadRight(6 + MenuWidth - Options[i].Length));
                 }
             }
         }
@@ -69,7 +85,7 @@ namespace AssetTracking.Menus
             }
             else
             {
-                CurrentSelection--;            
+                CurrentSelection--;
             }
         }
 

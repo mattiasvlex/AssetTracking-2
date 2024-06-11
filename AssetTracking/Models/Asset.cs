@@ -33,6 +33,39 @@ namespace AssetTracking.Models
             }
         }
         public Office? Office { get; set; }
+
         public string? OfficeLocation { get; set; }
+
+        public bool IsOlderThan(int years, int months)
+        {
+            DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+            int diffMonths = today.Year * 12 + today.Month - (this.Date.Year * 12 + this.Date.Month);
+            int diffDays = today.Day - this.Date.Day;
+            if (diffMonths > years * 12 + months)
+            {
+                return true;
+            }
+            else if (diffMonths == years * 12 + months && diffDays >= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override string ToString()
+        {
+            return "      " + Type.PadRight(15) + Brand.PadRight(15) + Model.PadRight(15) + 
+                   Date.ToString().PadRight(15) + OfficeLocation.PadRight(15) + Price;
+        }
+
+        public string ToStringWithLocalPrice()
+        {
+            return "      " + Type.PadRight(15) + Brand.PadRight(15) + Model.PadRight(15) +
+                   Date.ToString().PadRight(15) + OfficeLocation.PadRight(15) + 
+                   Price.ToString().PadRight(15) + Math.Round(Price * Office.ToUSD, 1);
+        }
     }
 }

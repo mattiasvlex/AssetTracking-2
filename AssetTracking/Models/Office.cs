@@ -14,5 +14,6 @@ namespace AssetTracking.Models
         public string? Location { get; set; }
         public string? Currency { get; set; }
         public double ToUSD { get; set; }
+        public ICollection<Asset>? Assets { get; set; }
     }
 }

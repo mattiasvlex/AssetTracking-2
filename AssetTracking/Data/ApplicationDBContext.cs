@@ -29,7 +29,7 @@ namespace AssetTracking.Data
 
             modelBuilder.Entity<Office>().HasData(office1, office2, office3);
 
-            modelBuilder.Entity<Asset>().HasData(new Asset { Id = 1, Type = "Computer", Brand = "ASUS ROG", Model = "B550-F", Date = new DateOnly(2020, 11, 24), Price = 950, OfficeLocation = office1.Location },
+            modelBuilder.Entity<Asset>().HasData(new Asset { Id = 1, Type = "Computer", Brand = "ASUS ROG", Model = "B550-F", Date = new DateOnly(2021, 10, 24), Price = 950, OfficeLocation = office1.Location },
                                                  new Asset { Id = 2, Type = "Computer", Brand = "HP", Model = "14S-FQ1010NO", Date = new DateOnly(2023, 01, 30), Price = 679, OfficeLocation = office2.Location },
                                                  new Asset { Id = 3, Type = "Phone", Brand = "Samsung", Model = "S20 Plus", Date = new DateOnly(2022, 09, 12), Price = 700, OfficeLocation = office3.Location },
                                                  new Asset { Id = 4, Type = "Phone", Brand = "Sony Xperia", Model = "10 III", Date = new DateOnly(2021, 03, 06), Price = 800, OfficeLocation = office1.Location },
